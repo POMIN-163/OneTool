@@ -1,0 +1,43 @@
+{
+	"hotkeys":	[{
+			"key_name":	"Ctrl+1",
+			"cmd_value":	"D:\\My\\MyTools\\My Tools.exe",
+			"enable":	true
+		}, {
+			"key_name":	"Ctrl+2",
+			"cmd_value":	"D:\\My\\OneTool\\Config\\Clipboard.exe",
+			"enable":	true
+		}, {
+			"key_name":	"Ctrl+3",
+			"cmd_value":	"D:\\My\\OneTool\\Config\\Translate.exe",
+			"enable":	true
+		}, {
+			"key_name":	"Ctrl+4",
+			"cmd_value":	"D:\\ProgramTools\\HelpTools\\Lucy_x64.exe",
+			"enable":	true
+		}, {
+			"key_name":	"Shift+Alt+Q",
+			"cmd_value":	"D:\\Program Files\\Tencent\\QQ\\Bin\\QQ.exe",
+			"enable":	true
+		}, {
+			"key_name":	"Shift+Alt+W",
+			"cmd_value":	"D:\\Program Files\\WeChat\\WeChat.exe",
+			"enable":	true
+		}, {
+			"key_name":	"Shift+Alt+C",
+			"cmd_value":	"D:\\Program Files\\CentBrowser\\CentBrowser\\Application\\chrome.exe",
+			"enable":	true
+		}, {
+			"key_name":	"Shift+Alt+N",
+			"cmd_value":	"D:\\exe\\Notepad3\\Notepad3++.exe",
+			"enable":	true
+		}, {
+			"key_name":	"Shift+Alt+P",
+			"cmd_value":	"D:\\Program Files\\PotPlayer\\PotPlayerMini64.exe",
+			"enable":	true
+		}, {
+			"key_name":	"Ctrl+Alt+T",
+			"cmd_value":	"D:\\Maker\\Console\\cmder\\Cmder.exe /start F:/",
+			"enable":	true
+		}]
+}
