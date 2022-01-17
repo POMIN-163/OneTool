@@ -39,7 +39,7 @@ typedef struct hotkey_obj {
 	char   cmd_value_buff[1000];
 } hotkey_obj;
 
-/* 获取唯一热键 ID */
+/* 鑾峰彇鍞竴鐑敭 ID */
 #define GET_HOTKEY_ID(obj) ((obj).vk << 3 | (obj).mod)
 
 extern HWND glo_hwnd;
@@ -59,7 +59,7 @@ void exit_all (void);
 void main_window_init (void);
 void main_window_client (void);
 
-/* 调试输出 */
+/* 璋冭瘯杈撳嚭 */
 #ifdef DEBUG
 	#define DEBUG_OUT(...) \
 	do {  \
