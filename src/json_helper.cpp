@@ -2,11 +2,11 @@
 
 cJSON* root = 0;
 /**
- * @brief æ–‡æœ¬è½¬é”®å€¼å¯¹
+ * @brief ÎÄ±¾×ª¼üÖµ¶Ô
  *
- * @param name æ–‡æœ¬
- * @param mod  åŠŸèƒ½é”®
- * @param vk   æŒ‰é”®
+ * @param name ÎÄ±¾
+ * @param mod  ¹¦ÄÜ¼ü
+ * @param vk   °´¼ü
  * @return true
  * @return false
 **/
@@ -15,16 +15,16 @@ bool string2key (string name, char& mod, char& vk) {
     int vk_pos = -1;
     mod = 0;
     vk = 0;
-    /* è½¬å¤§å†™ */
+    /* ×ª´óÐ´ */
     for (size_t i = 0; i < name.length (); i++) {
         char* p_char = (char*)(name.c_str () + i);
         *p_char = toupper (*p_char);
     }
-    /* åŠŸèƒ½é”®å€¼ */
+    /* ¹¦ÄÜ¼üÖµ */
     if (name.find ("ALT") != -1) { mod |= 0x01; mod_pos[0] = name.find ("ALT") + 3; }
     if (name.find ("CTRL") != -1) { mod |= 0x02; mod_pos[1] = name.find ("CTRL") + 4; }
     if (name.find ("SHIFT") != -1) { mod |= 0x04; mod_pos[2] = name.find ("SHIFT") + 5; }
-    /* é”®å€¼ */
+    /* ¼üÖµ */
     for (size_t i = 0; i < 3; i++) {
         vk_pos = vk_pos < mod_pos[i] ? mod_pos[i] : vk_pos;
     }
@@ -38,7 +38,7 @@ bool string2key (string name, char& mod, char& vk) {
     }
 }
 /**
- * @brief é”®å€¼å¯¹è½¬æ–‡æœ¬
+ * @brief ¼üÖµ¶Ô×ªÎÄ±¾
  *
 **/
 bool key2string (char mod, char vk, string& str) {
@@ -58,7 +58,7 @@ bool key2string (char mod, char vk, string& str) {
 
 }
 /**
- * @brief åˆ é™¤çƒ­é”®é¡¹å¹¶æ›´æ–° json æ–‡ä»¶
+ * @brief É¾³ýÈÈ¼üÏî²¢¸üÐÂ json ÎÄ¼þ
  *
  * @param json_path
  * @param index
@@ -83,7 +83,7 @@ void del_to_json (const char* json_path, int index) {
     load_from_json (json_path);
 }
 /**
- * @brief å¢žåŠ çƒ­é”®é¡¹å¹¶æ›´æ–° json æ–‡ä»¶
+ * @brief Ôö¼ÓÈÈ¼üÏî²¢¸üÐÂ json ÎÄ¼þ
  *
  * @param json_path
  * @param obj
@@ -157,7 +157,7 @@ void save_to_json (const char* json_path) {
     }
 }
 /**
- * @brief è½½å…¥ json æ–‡ä»¶
+ * @brief ÔØÈë json ÎÄ¼þ
  *
  * @param json_path
 **/
@@ -165,7 +165,7 @@ void load_from_json (const char* json_path) {
     ifstream in (json_path);
     string one_line = "";
     string context = "";
-    while (getline (in, one_line)) // é€è¡Œè¯»å–
+    while (getline (in, one_line)) // ÖðÐÐ¶ÁÈ¡
         context += one_line;
     if (root) {
         cJSON_Delete (root);

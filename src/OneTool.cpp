@@ -1,6 +1,6 @@
 /*********************************************************************
  * \file   OneTool.cpp
- * \brief  ä¸€ä¸ªå°å·¥å…· å«æœ‰å…¨å±€çƒ­é”®......
+ * \brief  Ò»¸öĞ¡¹¤¾ß º¬ÓĞÈ«¾ÖÈÈ¼ü......
  *
  * \author POMIN
  * \date   January 2022
@@ -78,7 +78,7 @@ void CleanupRenderTarget () {
 
 #pragma region Win_Fun
 
-/* çª—å£å›è°ƒ */
+/* ´°¿Ú»Øµ÷ */
 LRESULT WINAPI WndProc (HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler (HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
@@ -88,7 +88,7 @@ LRESULT WINAPI WndProc (HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 
     switch (msg) {
     case WM_GETMINMAXINFO:
-        /* æœ€å°å®½é«˜ */
+        /* ×îĞ¡¿í¸ß */
         MINMAXINFO* mminfo;
         mminfo = (PMINMAXINFO)lParam;
 
@@ -113,7 +113,7 @@ LRESULT WINAPI WndProc (HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             return 0;
         break;
     case WM_CLOSE:
-        /* å…³é—­çª—å£æ—¶ä»…æ˜¯éšè— */
+        /* ¹Ø±Õ´°¿ÚÊ±½öÊÇÒş²Ø */
         ShowWindow (glo_hwnd, HIDE_WINDOW);
         return 0;
     case WM_DESTROY:
@@ -125,7 +125,7 @@ LRESULT WINAPI WndProc (HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 #pragma endregion
 
 /**
- * \brief ç¨‹åºè¿›å…¥å‡½æ•°
+ * \brief ³ÌĞò½øÈëº¯Êı
  *
  * \param hInstance
  * \param hPrevInstance
@@ -139,12 +139,12 @@ int APIENTRY wWinMain (_In_ HINSTANCE hInstance,
     _In_ int       nCmdShow) {
 
     if (FindWindow (L"OneTool - by pomin", L"OneTool - by pomin")) {
-        DEBUG_OUT ("å·²ç»æ‰“å¼€è¿‡ä¸€ä¸ªè¿›ç¨‹");
-        MessageBox (glo_hwnd, L"å·²ç»æ‰“å¼€è¿‡ä¸€ä¸ªè¿›ç¨‹", L"è­¦å‘Š", MB_ICONERROR);
+        DEBUG_OUT ("ÒÑ¾­´ò¿ª¹ıÒ»¸ö½ø³Ì");
+        MessageBox (glo_hwnd, L"ÒÑ¾­´ò¿ª¹ıÒ»¸ö½ø³Ì", L"¾¯¸æ", MB_ICONERROR);
         exit (1);
     }
 
-    /* æ³¨å†Œçª—å£ç±» */
+    /* ×¢²á´°¿ÚÀà */
     WNDCLASSEX wc = {
         sizeof (WNDCLASSEX),
         CS_CLASSDC,
@@ -160,7 +160,7 @@ int APIENTRY wWinMain (_In_ HINSTANCE hInstance,
     };
     ::RegisterClassEx (&wc);
 
-    /* çª—å£åˆ›å»º */
+    /* ´°¿Ú´´½¨ */
     int win_w = GetSystemMetrics (SM_CXFULLSCREEN);
     int win_h = GetSystemMetrics (SM_CYFULLSCREEN);
     HWND hwnd = ::CreateWindow (
@@ -170,7 +170,7 @@ int APIENTRY wWinMain (_In_ HINSTANCE hInstance,
         win_w * 0.2f, win_h * 0.15f, win_w * 0.6f, win_h * 0.7f,
         NULL, NULL, wc.hInstance, NULL
     );
-    /* æ³¨é‡Šéƒ¨åˆ†ä¸ºæ—  Windows è¾¹æ¡†æ ·å¼ */
+    /* ×¢ÊÍ²¿·ÖÎªÎŞ Windows ±ß¿òÑùÊ½ */
     //HWND hwnd = ::CreateWindowEx (
     //    WS_EX_LAYERED,
     //    wc.lpszClassName,
@@ -189,7 +189,7 @@ int APIENTRY wWinMain (_In_ HINSTANCE hInstance,
     ::ShowWindow (hwnd, HIDE_WINDOW);
     ::UpdateWindow (hwnd);
 
-    /* imgui å¼€å§‹è½½å…¥ */
+    /* imgui ¿ªÊ¼ÔØÈë */
     ImGui::CreateContext ();
     ImGuiIO& io = ImGui::GetIO ();
     (void)io;
@@ -197,7 +197,7 @@ int APIENTRY wWinMain (_In_ HINSTANCE hInstance,
     ImGui_ImplWin32_Init (hwnd);
     ImGui_ImplDX11_Init (g_pd3dDevice, g_pd3dDeviceContext);
 
-    /* è·å–ç¨‹åºè·¯å¾„ ( ç»å¯¹è·¯å¾„ ) */
+    /* »ñÈ¡³ÌĞòÂ·¾¶ ( ¾ø¶ÔÂ·¾¶ ) */
     char* buff = new char [1024];
     GetModuleFileNameA (NULL, buff, 1024);
     PathRemoveFileSpecA (buff);
@@ -205,7 +205,7 @@ int APIENTRY wWinMain (_In_ HINSTANCE hInstance,
     DEBUG_OUT (exe_path.c_str ());
     delete [] buff;
 
-    /* åŠ è½½å¿…é¡»èµ„æº */
+    /* ¼ÓÔØ±ØĞë×ÊÔ´ */
     string need_res_path[] = {
         "/font/msyh.ttc",
         FONT_ICON_FILE_NAME_FAS,
@@ -215,15 +215,15 @@ int APIENTRY wWinMain (_In_ HINSTANCE hInstance,
 
     for (size_t i = 0; i < sizeof(need_res_path) / sizeof (string); i++) {
         if (!PathFileExistsA (GET_FILE_PATH (need_res_path[i]))) {
-            MessageBoxA (glo_hwnd, ("èµ„æºç¼ºå¤±: " + need_res_path[i]).c_str (), "", MB_ICONERROR);
+            MessageBoxA (glo_hwnd, ("×ÊÔ´È±Ê§: " + need_res_path[i]).c_str (), "", MB_ICONERROR);
             exit (1);
         }
     }
 
-    /* ä¸€èˆ¬å­—ä½“ å¾®è½¯é›…é»‘ */
+    /* Ò»°ã×ÖÌå Î¢ÈíÑÅºÚ */
     io.Fonts->AddFontFromFileTTF (GET_FILE_PATH("/font/msyh.ttc"), 32.0f, NULL, io.Fonts->GetGlyphRangesChineseSimplifiedCommon ());
 
-    /* å›¾æ ‡å­—ä½“ */
+    /* Í¼±ê×ÖÌå */
     static const ImWchar icons_ranges[] = { ICON_MIN_FA, ICON_MAX_FA, 0 };
     static const ImWchar icons_ranges_fk[] = { ICON_MIN_FK, ICON_MAX_FK, 0 };
     ImFontConfig icons_config;
@@ -250,7 +250,7 @@ int APIENTRY wWinMain (_In_ HINSTANCE hInstance,
 
 #pragma endregion
 
-        /* çª—å£å¾ªç¯ */
+        /* ´°¿ÚÑ­»· */
         main_window_client ();
 
         /*bool a = true;
@@ -265,7 +265,7 @@ int APIENTRY wWinMain (_In_ HINSTANCE hInstance,
         ImGui_ImplDX11_RenderDrawData (ImGui::GetDrawData ());
         g_pSwapChain->Present (1, 0);
 
-        /* æ³¨é‡Šéƒ¨åˆ†ä¸ºæ—  Windows è¾¹æ¡†æ ·å¼ */
+        /* ×¢ÊÍ²¿·ÖÎªÎŞ Windows ±ß¿òÑùÊ½ */
         //ImGui::Render ();
         //g_pd3dDeviceContext->OMSetRenderTargets (1, &g_mainRenderTargetView, NULL);
         //g_pd3dDeviceContext->ClearRenderTargetView (g_mainRenderTargetView, clear_color);

@@ -18,7 +18,7 @@ size_t hotkey_num;
 void ToTray (HWND hWnd);
 void DeleteTray (HWND hWnd);
 /**
- * @brief åŠ è½½æ‰˜ç›˜
+ * @brief ¼ÓÔØÍĞÅÌ
  *
  * @param hWnd
 **/
@@ -27,18 +27,18 @@ void ToTray (HWND hWnd) {
     nid.hWnd = hWnd;
     nid.uID = IDR_MAINFRAME;
     nid.uFlags = NIF_ICON | NIF_MESSAGE | NIF_TIP;
-    nid.uCallbackMessage = WM_TO_TRAY;    // è‡ªå®šä¹‰çš„æ¶ˆæ¯ å¤„ç†æ‰˜ç›˜å›¾æ ‡äº‹ä»¶
+    nid.uCallbackMessage = WM_TO_TRAY;    // ×Ô¶¨ÒåµÄÏûÏ¢ ´¦ÀíÍĞÅÌÍ¼±êÊÂ¼ş
     nid.hIcon = LoadIcon (GetModuleHandle (0), MAKEINTRESOURCE (IDI_SMALL));
-    wcscpy_s (nid.szTip, _T ("OneTool")); // é¼ æ ‡æ”¾åœ¨æ‰˜ç›˜å›¾æ ‡ä¸Šæ—¶æ˜¾ç¤ºçš„æ–‡å­—
-    Shell_NotifyIcon (NIM_ADD, &nid);     // åœ¨æ‰˜ç›˜åŒºæ·»åŠ å›¾æ ‡
+    wcscpy_s (nid.szTip, _T ("OneTool")); // Êó±ê·ÅÔÚÍĞÅÌÍ¼±êÉÏÊ±ÏÔÊ¾µÄÎÄ×Ö
+    Shell_NotifyIcon (NIM_ADD, &nid);     // ÔÚÍĞÅÌÇøÌí¼ÓÍ¼±ê
 }
 /**
- * @brief åˆ é™¤æ‰˜ç›˜
+ * @brief É¾³ıÍĞÅÌ
  *
  * @param hWnd
 **/
 void DeleteTray (HWND hWnd) {
-    Shell_NotifyIcon (NIM_DELETE, &nid);//åœ¨æ‰˜ç›˜ä¸­åˆ é™¤å›¾æ ‡
+    Shell_NotifyIcon (NIM_DELETE, &nid);//ÔÚÍĞÅÌÖĞÉ¾³ıÍ¼±ê
 }
 
 bool is_all_enable = true;
@@ -57,13 +57,13 @@ LRESULT WINAPI menu_callback (HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             ShellExecuteA (glo_menu_hwnd, "open", "explorer.exe ", dir.c_str(), NULL, SW_NORMAL);
         }
         else if (LOWORD (wParam) == ID_APP_RUN) {
-            /* åæ³¨å†Œæ‰€æœ‰çƒ­é”® */
+            /* ·´×¢²áËùÓĞÈÈ¼ü */
             if (is_all_enable) {
                 for (size_t i = 0; i < hotkey_num; i++) {
                     UnregisterHotKey (glo_menu_hwnd, hotkey[i].id);
                 }
             }
-            /* æ³¨å†Œçƒ­é”® */
+            /* ×¢²áÈÈ¼ü */
             else {
                 for (size_t i = 0; i < hotkey_num; i++) {
                     if (hotkey[i].enable) {
@@ -90,18 +90,18 @@ LRESULT WINAPI menu_callback (HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
         if ((LOWORD (lParam) & 0x07) != 0) {
             switch (LOWORD (lParam) & 0x07) {
             case 2:
-                /* å·¦é”® 1 2 */
+                /* ×ó¼ü 1 2 */
 
                 break;
             case 5:
-                /* å³é”® 4 5 */
+                /* ÓÒ¼ü 4 5 */
 
-                /* ä¸€ä¸ªå¼¹å‡ºå¼èœå• */
+                /* Ò»¸öµ¯³öÊ½²Ëµ¥ */
                 menu = CreatePopupMenu ();
-                AppendMenu (menu, MF_STRING, ID_APP_DISP, L"æ˜¾ç¤ºçª—å£");
-                AppendMenu (menu, MF_STRING, ID_APP_DIR , L"æ‰€åœ¨ç›®å½•");
-                AppendMenu (menu, MF_STRING, ID_APP_RUN , is_all_enable ? L"æš‚æ—¶å…³é—­" : L"é‡æ–°å¯åŠ¨");
-                AppendMenu (menu, MF_STRING, ID_APP_EXIT, L"å…³é—­ç¨‹åº");
+                AppendMenu (menu, MF_STRING, ID_APP_DISP, L"ÏÔÊ¾´°¿Ú");
+                AppendMenu (menu, MF_STRING, ID_APP_DIR , L"ËùÔÚÄ¿Â¼");
+                AppendMenu (menu, MF_STRING, ID_APP_RUN , is_all_enable ? L"ÔİÊ±¹Ø±Õ" : L"ÖØĞÂÆô¶¯");
+                AppendMenu (menu, MF_STRING, ID_APP_EXIT, L"¹Ø±Õ³ÌĞò");
 
                 ::GetCursorPos (&menu_pos);
                 TrackPopupMenu (menu, TPM_LEFTALIGN, menu_pos.x, menu_pos.y, 0, glo_menu_hwnd, NULL);
@@ -128,7 +128,7 @@ LRESULT WINAPI menu_callback (HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     return ::DefWindowProc (hWnd, msg, wParam, lParam);
 }
 /**
- * @brief è½½å…¥èœå•å’Œæ‰˜ç›˜çª—å£
+ * @brief ÔØÈë²Ëµ¥ºÍÍĞÅÌ´°¿Ú
  *
 **/
 void menu_init (void) {

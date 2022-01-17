@@ -12,10 +12,10 @@ ImVec2 win_pos = {
     0.0f, 0.0f
 };
 
-/* è·å¾—å¸¦æœ‰ webfont å‰ç¼€çš„ä¸­æ–‡ */
+/* »ñµÃ´øÓĞ webfont Ç°×ºµÄÖĞÎÄ */
 #define GET_ICON_TEXT(ico, text) (string (ICON_FA_##ico) + string (text)).c_str ()
 
-/* jsoné…ç½®æ–‡ä»¶ç›®å½• */
+/* jsonÅäÖÃÎÄ¼şÄ¿Â¼ */
 #define JSON_PATH (GET_FILE_PATH ("/data/one_tool.json"))
 
 static void HelpMarker (const char* desc) {
@@ -29,7 +29,7 @@ static void HelpMarker (const char* desc) {
     }
 }
 /**
- * @brief å…³é—­æ‰€æœ‰çª—å£
+ * @brief ¹Ø±ÕËùÓĞ´°¿Ú
  *
 **/
 void exit_all (void) {
@@ -40,13 +40,13 @@ void exit_all (void) {
     exit (0);
 }
 /**
- * @brief åˆå§‹åŒ–ä¸»çª—å£
+ * @brief ³õÊ¼»¯Ö÷´°¿Ú
  *
 **/
 void main_window_init (void) {
     ImGuiIO& io = ImGui::GetIO ();
     ImGuiStyle& style = ImGui::GetStyle ();
-    // è®¾ç½®å­—ä½“
+    // ÉèÖÃ×ÖÌå
     ImFontAtlas* atlas = io.Fonts;
     for (int i = 0; i < atlas->Fonts.Size; i++) {
         ImFont* font = atlas->Fonts[i];
@@ -75,7 +75,7 @@ void main_window_init (void) {
     menu_init ();
 }
 /**
- * @brief çª—å£å¾ªç¯
+ * @brief ´°¿ÚÑ­»·
  *
 **/
 void main_window_client (void) {
@@ -92,10 +92,10 @@ void main_window_client (void) {
     static float main_y = 0;
     static ID3D11ShaderResourceView* my_texture = NULL;
 
-    /* åˆå§‹åŒ–ã€å‡†å¤‡èµ„æº (ä»…ä¸€æ¬¡) */
+    /* ³õÊ¼»¯¡¢×¼±¸×ÊÔ´ (½öÒ»´Î) */
     if (first_load) {
         main_window_init ();
-        /* è½½å…¥å›¾ç‰‡ */
+        /* ÔØÈëÍ¼Æ¬ */
         bool ret = LoadTextureFromFile (GET_FILE_PATH ("/pic/cat.png"), &my_texture, &my_image_width, &my_image_height);
         IM_ASSERT (ret);
 
@@ -105,7 +105,7 @@ void main_window_client (void) {
     if (!::IsWindowVisible (glo_hwnd)) {
         return;
     }
-    /* imgui æ¥å…¥ */
+    /* imgui ½ÓÈë */
     ImGui::Begin (
         u8"OneTool - by pomin",
         NULL,
@@ -116,35 +116,35 @@ void main_window_client (void) {
         ImGuiWindowFlags_MenuBar |
         ImGuiWindowFlags_NoScrollbar
     );
-    /* å›ºå®šä½ç½® */
+    /* ¹Ì¶¨Î»ÖÃ */
     ImGui::SetWindowSize (win_size);
     ImGui::SetWindowPos (win_pos);
-    /* ç½®é¡¶çª—å£ */
+    /* ÖÃ¶¥´°¿Ú */
     // SetWindowPos (glo_hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
-    /* è®¾ç½®èœå• */
+    /* ÉèÖÃ²Ëµ¥ */
     if (ImGui::BeginMenuBar ()) {
 
-        if (ImGui::BeginMenu (GET_ICON_TEXT (FILE, u8"  æ–‡ä»¶"))) {
-            if (ImGui::MenuItem (GET_ICON_TEXT (TRUCK_LOADING, u8"  é‡è½½"))) {
+        if (ImGui::BeginMenu (GET_ICON_TEXT (FILE, u8"  ÎÄ¼ş"))) {
+            if (ImGui::MenuItem (GET_ICON_TEXT (TRUCK_LOADING, u8"  ÖØÔØ"))) {
                 load_from_json (JSON_PATH);
             }
-            if (ImGui::MenuItem (GET_ICON_TEXT (SAVE, u8"   ä¿å­˜"))) {
+            if (ImGui::MenuItem (GET_ICON_TEXT (SAVE, u8"   ±£´æ"))) {
                 save_to_json (JSON_PATH);
             }
             ImGui::EndMenu ();
         }
-        if (ImGui::BeginMenu (GET_ICON_TEXT (ADJUST, u8"  ä¸»é¢˜"))) {
-            if (ImGui::MenuItem (GET_ICON_TEXT (MOON, u8"  æš—è‰²"))) {
+        if (ImGui::BeginMenu (GET_ICON_TEXT (ADJUST, u8"  Ö÷Ìâ"))) {
+            if (ImGui::MenuItem (GET_ICON_TEXT (MOON, u8"  °µÉ«"))) {
                 ImGui::StyleColorsDark ();
             }
-            if (ImGui::MenuItem (GET_ICON_TEXT (SUN, u8"  äº®è‰²"))) {
+            if (ImGui::MenuItem (GET_ICON_TEXT (SUN, u8"  ÁÁÉ«"))) {
                 ImGui::StyleColorsLight ();
                 style.Colors[0].w = 0.7;
             }
             ImGui::EndMenu ();
         }
-        if (ImGui::BeginMenu (GET_ICON_TEXT (COGS, u8"  è®¾ç½®"))) {
-            if (ImGui::MenuItem (GET_ICON_TEXT (POWER_OFF, u8"  é€€å‡º"))) {
+        if (ImGui::BeginMenu (GET_ICON_TEXT (COGS, u8"  ÉèÖÃ"))) {
+            if (ImGui::MenuItem (GET_ICON_TEXT (POWER_OFF, u8"  ÍË³ö"))) {
                 exit_all ();
             }
             ImGui::EndMenu ();
@@ -153,14 +153,14 @@ void main_window_client (void) {
         ImGui::EndMenuBar ();
     }
 
-    /* è®¡ç®—å®½é«˜ */
+    /* ¼ÆËã¿í¸ß */
     main_size = ImGui::GetWindowSize ();
     main_size.x -= style.ItemSpacing.x * 2 + style.WindowPadding.x * 2;
     main_size.y -= style.ItemSpacing.y * 2 + style.WindowPadding.y * 2 + menu_h;
 
     main_x = main_size.x;
     main_y = main_size.y;
-    /* ç»˜åˆ¶çª—å£ */
+    /* »æÖÆ´°¿Ú */
     if (ImGui::BeginChild ("CHILD-1", ImVec2 (130, main_y), true)) {
         ImGui::Image ((void*)my_texture, ImVec2 (my_image_width * 0.5, my_image_height * 0.5));
     }
@@ -170,11 +170,11 @@ void main_window_client (void) {
     if (ImGui::BeginChild ("CHILD-2", ImVec2 (0, main_y), false)) {
         if (ImGui::BeginTabBar ("TAB-1")) {
             ImGui::PushStyleVar (ImGuiStyleVar_ChildRounding, 5.0f);
-            /* çƒ­é”®çª—å£ç»˜åˆ¶ */
-            if (ImGui::BeginTabItem (GET_ICON_TEXT (KEY, u8"  çƒ­é”®"))) {
+            /* ÈÈ¼ü´°¿Ú»æÖÆ */
+            if (ImGui::BeginTabItem (GET_ICON_TEXT (KEY, u8"  ÈÈ¼ü"))) {
                 ImGui::BeginChild ("HOTKEYS", ImVec2(0, main_y - 120));
                 for (int i = hotkey_num - 1; i > -1; i--) {
-                    /* å•ä¸ªé€‰æ‹©æ¡†ã€è¾“å…¥æ¡† * 2 ç»„åˆ */
+                    /* µ¥¸öÑ¡Ôñ¿ò¡¢ÊäÈë¿ò * 2 ×éºÏ */
                     if (ImGui::BeginChild ((string("item_child-") + to_string(i)).c_str(), ImVec2(0, 50))) {
                         int xxx = (ImGui::GetWindowWidth()) / 2;
                         if (ImGui::Checkbox (" ", &hotkey[i].enable)) {
@@ -191,7 +191,7 @@ void main_window_client (void) {
                                 UnregisterHotKey (glo_menu_hwnd, hotkey[i].id);
                             }
                             save_to_json (JSON_PATH);
-                            // ::MessageBoxA (glo_hwnd, (string("æŒ‰é”®è¢«æŒ‰ä¸‹, å½“å‰å€¼: ") + to_string(hotkey[i].enable)).c_str(), "", 0);
+                            // ::MessageBoxA (glo_hwnd, (string("°´¼ü±»°´ÏÂ, µ±Ç°Öµ: ") + to_string(hotkey[i].enable)).c_str(), "", 0);
                         }
                         ImGui::SameLine ();
                         if (ImGui::BeginChild ("INPUT_NAME", ImVec2 (xxx, 50))) {
@@ -217,7 +217,7 @@ void main_window_client (void) {
                         ImGui::SameLine ();
                         ImGui::SetCursorPosX (ImGui::GetCursorPosX () - main_x * 0.15);
                         if (ImGui::BeginChild ("DEL", ImVec2 (xxx, 50))) {
-                            if (ImGui::Button (GET_ICON_TEXT (UNDO, u8"  åˆ é™¤"))) {
+                            if (ImGui::Button (GET_ICON_TEXT (UNDO, u8"  É¾³ı"))) {
                                 del_to_json (JSON_PATH, i);
                             }
                         }
@@ -227,7 +227,7 @@ void main_window_client (void) {
                 }
                 ImGui::EndChild ();
                 ImGui::SetCursorPosY (main_y - 55);
-                /* å¢åŠ çƒ­é”®çª—å£ */
+                /* Ôö¼ÓÈÈ¼ü´°¿Ú */
                 ImGui::BeginChild ("CHILD_ADD", ImVec2 (0, 0));
                 {
                     const char* items[] = {
@@ -266,7 +266,7 @@ void main_window_client (void) {
                     ImGui::SameLine ();
                     ImGui::BeginChild ("ADD-4", ImVec2 (0, 0));
                     {
-                        if (ImGui::Button (GET_ICON_TEXT (REGISTERED, u8"  æ³¨å†Œ"))) {
+                        if (ImGui::Button (GET_ICON_TEXT (REGISTERED, u8"  ×¢²á"))) {
                             hotkey_obj* new_hotkey = new hotkey_obj;
                             bool id_is_used = false;
                             new_hotkey->enable = false;
@@ -294,8 +294,8 @@ void main_window_client (void) {
                 ImGui::EndChild ();
                 ImGui::EndTabItem ();
             }
-            /* å…¶ä»–çª—å£ç»˜åˆ¶ */
-            if (ImGui::BeginTabItem (GET_ICON_TEXT (ARCHIVE, u8"  å…¶ä»–"))) {
+            /* ÆäËû´°¿Ú»æÖÆ */
+            if (ImGui::BeginTabItem (GET_ICON_TEXT (ARCHIVE, u8"  ÆäËû"))) {
 
                 ImGui::EndTabItem ();
             }
