@@ -19,7 +19,7 @@
 
 ## 任务栏托盘
 
-![](screenshot/tray.jpg)
+![](screenshot/tray_new.jpg)
 
 ## JSON 配置文件
 
