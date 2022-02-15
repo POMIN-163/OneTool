@@ -135,6 +135,9 @@
     <Image Include="res\logo.ico">
       <Filter>res</Filter>
     </Image>
+    <Image Include="res\dso.ico">
+      <Filter>res</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="res\OneTool.rc">

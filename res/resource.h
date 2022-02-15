@@ -14,6 +14,10 @@
 #define IDR_MAINFRAME                   128
 #define IDI_ICON1                       130
 #define IDI_ICON2                       135
+#define IDB_BITMAP1                     137
+#define IDB_BITMAP2                     138
+#define IDB_BITMAP3                     139
+#define IDB_BITMAP4                     140
 #define ID_TUIDDDDASDS                  32771
 #define IDC_STATIC                      -1
 
@@ -22,7 +26,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NO_MFC                     1
-#define _APS_NEXT_RESOURCE_VALUE        137
+#define _APS_NEXT_RESOURCE_VALUE        141
 #define _APS_NEXT_COMMAND_VALUE         32772
 #define _APS_NEXT_CONTROL_VALUE         1000
 #define _APS_NEXT_SYMED_VALUE           110

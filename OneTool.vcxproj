@@ -190,6 +190,7 @@
     <ClCompile Include="src\main_window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\dso.ico" />
     <Image Include="res\logo.ico" />
   </ItemGroup>
   <ItemGroup>
